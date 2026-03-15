@@ -360,6 +360,7 @@ footer {
 /* ─── Responsive ────────────────────────────────────────────────── */
 @media (max-width: 580px) {
   .nav-links { display: none; }
+  .lang-switch { margin-left: auto; }
 
   .hero h1 { letter-spacing: 0.06em; }
 

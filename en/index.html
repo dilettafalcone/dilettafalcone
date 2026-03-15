@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <base href="../">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
@@ -26,6 +27,7 @@
         <span class="sep">·</span>
         <span class="active">EN</span>
       </div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
     </div>
   </nav>
 
@@ -43,15 +45,15 @@
       <div class="timeline">
         <div class="timeline-item">
           <span class="timeline-year">2021</span>
-          <span class="timeline-desc">Degree in Medicine and Surgery (MD)</span>
+          <div class="timeline-desc">Degree in Medicine and Surgery (MD)<br><em class="timeline-place">University of Florence</em></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2021–2024</span>
-          <span class="timeline-desc">Specific Training Course in General Medicine</span>
+          <div class="timeline-desc">Specific Training Course in General Medicine<br><em class="timeline-place">Tuscany Region</em></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2025–2029</span>
-          <span class="timeline-desc">Specialisation School in Hygiene and Preventive Medicine</span>
+          <div class="timeline-desc">Specialisation School in Hygiene and Preventive Medicine<br><em class="timeline-place">University of Florence</em></div>
         </div>
       </div>
     </section>

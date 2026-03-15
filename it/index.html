@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <base href="../">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
 
@@ -26,6 +27,7 @@
         <span class="sep">·</span>
         <a href="/en/">EN</a>
       </div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema"></button>
     </div>
   </nav>
 
@@ -43,15 +45,15 @@
       <div class="timeline">
         <div class="timeline-item">
           <span class="timeline-year">2021</span>
-          <span class="timeline-desc">Laurea in Medicina e Chirurgia</span>
+          <div class="timeline-desc">Laurea in Medicina e Chirurgia<br><em class="timeline-place">Università degli Studi di Firenze</em></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2021–2024</span>
-          <span class="timeline-desc">Corso di Formazione Specifica in Medicina Generale</span>
+          <div class="timeline-desc">Corso di Formazione Specifica in Medicina Generale<br><em class="timeline-place">Regione Toscana</em></div>
         </div>
         <div class="timeline-item">
           <span class="timeline-year">2025–2029</span>
-          <span class="timeline-desc">Scuola di Specializzazione in Igiene e Medicina Preventiva</span>
+          <div class="timeline-desc">Scuola di Specializzazione in Igiene e Medicina Preventiva<br><em class="timeline-place">Università degli Studi di Firenze</em></div>
         </div>
       </div>
     </section>

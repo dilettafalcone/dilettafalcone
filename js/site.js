@@ -14,7 +14,7 @@ function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
   const btn = document.getElementById('theme-toggle');
-  if (btn) btn.textContent = theme === 'dark' ? '🌞' : '🌙';
+  if (btn) btn.textContent = theme === 'dark' ? '☀️' : '🌙';
 }
 
 function toggleTheme() {

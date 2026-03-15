@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  font-family: 'Lora', 'Palatino Linotype', 'Palatino', Georgia, serif;
+  font-family: 'Source Serif 4', 'Palatino Linotype', 'Palatino', Georgia, serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
@@ -114,41 +114,22 @@ a:hover { color: var(--muted); }
   border-bottom: 2px solid var(--rule);
 }
 
-.hero-pretitle {
-  font-variant: small-caps;
-  font-size: 0.9rem;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  margin-bottom: 0.75rem;
-}
-
 .hero h1 {
   font-size: clamp(2.2rem, 5.5vw, 3.2rem);
   font-weight: normal;
   font-variant: small-caps;
   letter-spacing: 0.1em;
   line-height: 1.1;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.85rem;
 }
 
-.hero-ornament {
-  display: block;
-  font-size: 0.85rem;
-  letter-spacing: 0.5em;
-  color: var(--rule-l);
-  margin-bottom: 1.75rem;
-  user-select: none;
-}
-
-.hero-credentials {
-  list-style: none;
-  font-size: 0.925rem;
+.hero-subtitle {
+  font-size: 0.95rem;
+  font-variant: small-caps;
+  letter-spacing: 0.18em;
   color: var(--muted);
-  line-height: 1;
   font-style: italic;
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
+  margin-bottom: 0;
 }
 
 /* ─── Section labels ────────────────────────────────────────────── */

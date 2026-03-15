@@ -40,6 +40,23 @@ Il Documento di consenso sottolinea la necessità di promuovere modelli di prima
 
 Una colazione equilibrata dovrebbe comprendere fonti energetiche di rapido utilizzo (zuccheri semplici) insieme a fonti a dismissione più lenta (carboidrati complessi e fibre, da cereali soprattutto integrali), oltre a una quota proteica e lipidica apportata principalmente dal latte e dai suoi derivati. Il panel di esperti raccomanda una rotazione settimanale tra modelli diversi — combinando alimenti tipici della tradizione italiana come pane, biscotti e fette biscottate con cereali pronti per la colazione, prodotti da forno, marmellate e frutta — per garantire l'equilibrio dei nutrienti e sostenere nel tempo il mantenimento dell'abitudine.
 
+Il documento propone dieci esempi concreti di prima colazione, riferiti a un soggetto con fabbisogno calorico giornaliero di circa 2.000 kcal (per gli uomini adulti le quantità vanno aumentate del 10-20%; per i bambini di 8-10 anni possono restare invariate). Per ciascun modello sono indicati la composizione degli alimenti e i principali valori nutrizionali.
+
+| # | Composizione | kcal | Proteine (g) | Carboidrati (g) | Grassi (g) | Fibra (g) |
+|---|---|---|---|---|---|---|
+| 1 | Latte/yogurt intero (200 ml), corn flakes (30 g), mela (150 g) | 301 | 8,60 | 51,30 | 7,52 | 3,90 |
+| 2 | Latte/yogurt intero (200 ml), fiocchi di riso e frumento (30 g), mela (150 g) | 298 | 8,60 | 50,04 | 7,64 | 4,53 |
+| 3 | Latte/yogurt intero (200 ml), cereali al cioccolato (30 g), mela (150 g) | 304 | 8,50 | 50,42 | 8,27 | 4,22 |
+| 4 | Latte/yogurt ps (200 ml), brioche non farcita (50 g), mela (150 g) | 372 | 11,10 | 55,50 | 13,20 | 4,25 |
+| 5 | Latte/yogurt ps (200 ml), biscotti secchi (52,2 g), spremuta (100 ml) | 349 | 11,15 | 62,58 | 7,72 | 2,98 |
+| 6 | Latte/yogurt ps (200 ml), frollini (52,2 g), spremuta (100 ml) | 388 | 11,56 | 53,76 | 14,56 | 0,78 |
+| 7 | Latte/yogurt ps (150 ml), fette biscottate (50 g), marmellata (30 g), spremuta (100 ml) | 378 | 11,70 | 74,66 | 5,70 | 2,41 |
+| 8 | Latte/yogurt ps (125 ml), pane di grano duro (50 g), burro (10 g), marmellata (30 g), spremuta (100 ml) | 359 | 10,28 | 56,60 | 11,74 | 5,56 |
+| 9 | Latte/yogurt ps (125 ml), pane di grano duro (50 g), crema spalmabile al cioccolato/nocciola (30 g), mela (100 g) | 388 | 11,79 | 58,48 | 13,00 | 8,10 |
+| 10 | Latte/yogurt ps (220 ml), merendina ai cereali (30 g), mela (200 g) | 322 | 11,62 | 46,46 | 10,80 | 4,78 |
+
+Tutti i modelli rientrano nel range del 15-19% dell'intake calorico giornaliero raccomandato dalle linee guida INRAN e prevedono sempre tre componenti fondamentali: una fonte lattiero-casearia (latte o yogurt), una fonte di carboidrati (cereali, biscotti, pane, fette biscottate o prodotti da forno) e frutta o spremuta. Le eventuali piccole deviazioni rispetto ai LARN (Livelli di Assunzione di Nutrienti Raccomandati) possono essere facilmente compensate variando il modello di colazione nei diversi giorni della settimana o aggiustando le scelte alimentari a pranzo e a cena.
+
 Un elemento trasversale è l'importanza del contesto familiare: una prima colazione vissuta come momento piacevole e condiviso, specialmente in età pediatrica e adolescenziale, ne favorisce il mantenimento e produce effetti positivi sulla prevenzione di sovrappeso e stati dismetabolici.
 
 ## Conclusioni

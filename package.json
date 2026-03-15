@@ -1,0 +1,7 @@
+{
+  "name": "dilettafalcone-site",
+  "private": true,
+  "scripts": {
+    "posts": "node scripts/update-posts.js"
+  }
+}

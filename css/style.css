@@ -164,6 +164,61 @@ h2.section-label {
   margin-bottom: 1.75rem;
 }
 
+/* ─── Timeline (Formazione) ─────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 6.5rem;
+}
+
+/* linea verticale */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5.75rem;
+  top: 0.65rem;
+  bottom: 0.65rem;
+  width: 1px;
+  background: var(--rule-l);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.6rem;
+}
+
+/* pallino sulla linea */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -0.28rem;
+  top: 1.05rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--muted);
+}
+
+.timeline-year {
+  position: absolute;
+  left: -6.5rem;
+  top: 0.55rem;
+  width: 5.5rem;
+  text-align: right;
+  font-variant: small-caps;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+.timeline-desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
 /* ─── Posts list ────────────────────────────────────────────────── */
 .posts-grid {
   display: flex;

@@ -76,6 +76,9 @@ function generatePostHtml(lang, slug, title) {
       <a href="/${lang}/" class="nav-logo">Diletta Falcone</a>
       <ul class="nav-links">${navLinks(lang)}
       </ul>${langSwitch(lang)}
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
       <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="${themeToggleLabel(lang)}"></button>
     </div>
   </nav>

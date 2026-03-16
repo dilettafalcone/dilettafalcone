@@ -23,6 +23,24 @@ function toggleTheme() {
   setTheme(current === 'dark' ? 'light' : 'dark');
 }
 
+/* ─── Mobile nav ─────────────────────────────────────────────────── */
+function toggleNav() {
+  const links = document.querySelector('.nav-links');
+  const btn   = document.getElementById('nav-hamburger');
+  const open  = links.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+      const btn = document.getElementById('nav-hamburger');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+});
+
 /* ─── Home page ─────────────────────────────────────────────────── */
 function initSite(lang) {
   _lang = lang;

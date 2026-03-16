@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Posts by Diletta Falcone — medicine, science, culture.">
+  <title>Posts — Diletta Falcone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/en/" class="nav-logo">Diletta Falcone</a>
+      <ul class="nav-links">
+        <li><a href="/en/#education">Education</a></li>
+        <li><a href="/en/posts/" aria-current="page">Posts</a></li>
+        <li><a href="/en/#contact">Contact</a></li>
+      </ul>
+      <div class="lang-switch">
+        <a href="/it/posts/">IT</a>
+        <span class="sep">·</span>
+        <span class="active">EN</span>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"></button>
+    </div>
+  </nav>
+
+  <main>
+    <section id="posts">
+      <h2 class="section-label">Posts</h2>
+      <div id="category-filters" class="category-filters"></div>
+      <div id="posts-list"><p class="posts-empty">Loading…</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Diletta Falcone</p>
+  </footer>
+
+  <script src="/js/site.js"></script>
+  <script>initPostsList('en');</script>
+
+</body>
+</html>

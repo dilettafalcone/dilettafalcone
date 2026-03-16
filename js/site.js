@@ -2,6 +2,7 @@
 
 let _posts = [];
 let _lang  = 'it';
+let _activeCategory = '';
 
 /* ─── Theme ─────────────────────────────────────────────────────── */
 function initTheme() {
@@ -22,58 +23,71 @@ function toggleTheme() {
   setTheme(current === 'dark' ? 'light' : 'dark');
 }
 
-async function initSite(lang) {
+/* ─── Home page ─────────────────────────────────────────────────── */
+function initSite(lang) {
+  _lang = lang;
+  initTheme();
+}
+
+/* ─── Posts listing page ─────────────────────────────────────────── */
+async function initPostsList(lang) {
   _lang = lang;
   initTheme();
   await loadMarked();
 
   try {
-    const base  = document.querySelector('base')?.href || '../';
-    const slugs = await fetch(base + 'posts/' + lang + '/index.json').then(r => r.json());
-
-    // Carica tutti i .md in parallelo
+    const slugs = await fetch('/posts/' + lang + '/index.json').then(r => r.json());
     const results = await Promise.allSettled(
-      slugs.map(slug => fetchPost(base, lang, slug))
+      slugs.map(slug => fetchPost(lang, slug))
     );
     _posts = results.filter(r => r.status === 'fulfilled').map(r => r.value);
   } catch (e) {
     _posts = [];
   }
 
-  renderPostsList();
-
-  // Hash routing
-  if (window.location.hash.startsWith('#post-')) {
-    const post = _posts.find(p => p.slug === window.location.hash.slice(6));
-    if (post) showPost(post);
-  }
-
-  window.addEventListener('hashchange', () => {
-    if (window.location.hash.startsWith('#post-')) {
-      const post = _posts.find(p => p.slug === window.location.hash.slice(6));
-      if (post) showPost(post);
-    } else {
-      hidePost();
-    }
-  });
+  renderCategoryFilters();
+  renderFilteredPosts();
 }
 
-/* ─── Carica e analizza un .md ──────────────────────────────────── */
-async function fetchPost(base, lang, slug) {
-  const res = await fetch(base + 'posts/' + lang + '/' + slug + '.md');
+/* ─── Individual post page ───────────────────────────────────────── */
+async function initPostPage(lang, slug) {
+  _lang = lang;
+  initTheme();
+  await loadMarked();
+
+  try {
+    const post = await fetchPost(lang, slug);
+    document.title = post.title + ' — Diletta Falcone';
+    renderSinglePost(post);
+  } catch (e) {
+    const c = document.getElementById('post-content');
+    if (c) c.innerHTML = '<p class="posts-empty">' +
+      (lang === 'it' ? 'Post non trovato.' : 'Post not found.') + '</p>';
+  }
+}
+
+/* ─── Fetch and parse a .md ──────────────────────────────────────── */
+async function fetchPost(lang, slug) {
+  const res = await fetch('/posts/' + lang + '/' + slug + '.md');
   if (!res.ok) throw new Error('HTTP ' + res.status);
   const { meta, content } = parseFrontmatter(await res.text());
-  return { slug, title: meta.title || slug, date: meta.date || '', summary: meta.summary || '', content };
+  return {
+    slug,
+    title:    meta.title    || slug,
+    date:     meta.date     || '',
+    summary:  meta.summary  || '',
+    category: meta.category || '',
+    content
+  };
 }
 
-/* Analizza il blocco --- ... --- in cima al file */
 function parseFrontmatter(text) {
   const m = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
   if (!m) return { meta: {}, content: text.trim() };
   const meta = {};
   m[1].split('\n').forEach(line => {
     const i = line.indexOf(':');
-    if (i > -1) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim();
+    if (i > -1) meta[line.slice(0, i).trim()] = line.slice(i + 1).trim().replace(/^["']|["']$/g, '');
   });
   return { meta, content: m[2].trim() };
 }
@@ -89,7 +103,7 @@ function loadMarked() {
   });
 }
 
-/* ─── Formato data ──────────────────────────────────────────────── */
+/* ─── Date formatting ────────────────────────────────────────────── */
 function formatDate(dateStr, lang) {
   return new Date(dateStr + 'T12:00:00').toLocaleDateString(
     lang === 'it' ? 'it-IT' : 'en-US',
@@ -97,37 +111,69 @@ function formatDate(dateStr, lang) {
   );
 }
 
-/* ─── Lista post ────────────────────────────────────────────────── */
-function renderPostsList() {
+/* ─── Category filters ───────────────────────────────────────────── */
+function renderCategoryFilters() {
+  const container = document.getElementById('category-filters');
+  if (!container) return;
+
+  const cats = [...new Set(_posts.map(p => p.category).filter(Boolean))].sort();
+  if (!cats.length) { container.style.display = 'none'; return; }
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'cat-btn active';
+  allBtn.textContent = _lang === 'it' ? 'Tutti' : 'All';
+  allBtn.onclick = () => setCategory('');
+  container.appendChild(allBtn);
+
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn';
+    btn.textContent = cat;
+    btn.onclick = () => setCategory(cat);
+    container.appendChild(btn);
+  });
+}
+
+function setCategory(cat) {
+  _activeCategory = cat;
+  const allLabel = _lang === 'it' ? 'Tutti' : 'All';
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.classList.toggle('active', cat === '' ? btn.textContent === allLabel : btn.textContent === cat);
+  });
+  renderFilteredPosts();
+}
+
+/* ─── Posts list rendering ───────────────────────────────────────── */
+function renderFilteredPosts() {
   const container = document.getElementById('posts-list');
   if (!container) return;
 
-  if (!_posts.length) {
+  const filtered = _activeCategory
+    ? _posts.filter(p => p.category === _activeCategory)
+    : _posts;
+
+  const sorted = [...filtered].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  if (!sorted.length) {
     container.innerHTML = '<p class="posts-empty">' +
       (_lang === 'it' ? 'Nessun post ancora.' : 'No posts yet.') + '</p>';
     return;
   }
 
-  const sorted = [..._posts].sort((a, b) => new Date(b.date) - new Date(a.date));
-  const grid   = document.createElement('div');
+  const grid = document.createElement('div');
   grid.className = 'posts-grid';
-  grid.id = 'posts-grid';
 
   sorted.forEach(post => {
-    const item = document.createElement('div');
+    const item = document.createElement('a');
     item.className = 'post-item';
-    item.setAttribute('role', 'button');
-    item.setAttribute('tabindex', '0');
+    item.href = '/' + _lang + '/posts/' + post.slug + '/';
     item.innerHTML =
       '<div>' +
+        (post.category ? '<span class="post-cat">' + escHtml(post.category) + '</span>' : '') +
         '<div class="post-title">' + escHtml(post.title) + '</div>' +
         '<p class="post-summary">' + escHtml(post.summary) + '</p>' +
       '</div>' +
       '<span class="post-date">' + formatDate(post.date, _lang) + '</span>';
-    item.addEventListener('click', () => { window.location.hash = 'post-' + post.slug; });
-    item.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') window.location.hash = 'post-' + post.slug;
-    });
     grid.appendChild(item);
   });
 
@@ -135,44 +181,26 @@ function renderPostsList() {
   container.appendChild(grid);
 }
 
-/* ─── Mostra post ───────────────────────────────────────────────── */
-function showPost(post) {
-  const grid   = document.getElementById('posts-grid');
-  const detail = document.getElementById('post-detail');
-  if (!detail) return;
-
-  if (grid) grid.classList.add('hidden');
-  detail.classList.add('visible');
+/* ─── Single post rendering ──────────────────────────────────────── */
+function renderSinglePost(post) {
+  const container = document.getElementById('post-content');
+  if (!container) return;
 
   const bodyHtml = window.marked
     ? marked.parse(post.content)
     : '<p>' + post.content.replace(/\n\n/g, '</p><p>') + '</p>';
 
-  detail.innerHTML =
-    '<button class="back-btn" onclick="goBackToPosts()">← ' +
-      (_lang === 'it' ? 'Torna ai post' : 'Back to posts') +
-    '</button>' +
+  container.innerHTML =
+    '<a class="back-btn" href="/' + _lang + '/posts/">' +
+      '← ' + (_lang === 'it' ? 'Torna ai post' : 'Back to posts') +
+    '</a>' +
+    (post.category ? '<span class="post-cat">' + escHtml(post.category) + '</span>' : '') +
     '<h1 class="post-full-title">' + escHtml(post.title) + '</h1>' +
     '<p class="post-full-date">' + formatDate(post.date, _lang) + '</p>' +
     '<div class="post-body">' + bodyHtml + '</div>';
-
-  document.getElementById('posts').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-/* ─── Torna alla lista ──────────────────────────────────────────── */
-function goBackToPosts() {
-  history.pushState('', document.title, window.location.pathname + '#posts');
-  hidePost();
-}
-
-function hidePost() {
-  const grid   = document.getElementById('posts-grid');
-  const detail = document.getElementById('post-detail');
-  if (grid)   grid.classList.remove('hidden');
-  if (detail) { detail.classList.remove('visible'); detail.innerHTML = ''; }
-}
-
-/* ─── Utility ───────────────────────────────────────────────────── */
+/* ─── Utility ────────────────────────────────────────────────────── */
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;').replace(/</g, '&lt;')

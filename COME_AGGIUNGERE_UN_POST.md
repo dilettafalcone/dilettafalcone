@@ -26,6 +26,7 @@ Ogni file inizia con un piccolo blocco tra `---`:
 ---
 title: Il titolo del post
 date: 2026-04-01
+category: medicina
 summary: Breve descrizione che appare nella lista (1-2 righe).
 ---
 
@@ -37,15 +38,34 @@ Puoi usare **grassetto**, *corsivo*, [link](https://esempio.com),
 elenchi puntati, citazioni — tutto il Markdown standard.
 ```
 
-### 3. Aggiungi il nome file all'indice
+Il campo `category` è **opzionale** ma consigliato: permette di filtrare i post per argomento nella pagina `/posts/`. Usa un nome breve e coerente, tutto in minuscolo, es.:
 
-Apri `posts/it/index.json` e aggiungi il nome del file (senza `.md`) in cima all'array:
+- `medicina`
+- `informatica`
+- `cinema`
+- `fotografia`
 
-```json
-["vitamina-d", "dormire-bene", "benvenuta", "ferro-alimentazione"]
+### 3. Genera le pagine HTML e aggiorna l'indice
+
+Esegui lo script di aggiornamento dalla cartella del progetto:
+
+```bash
+node scripts/update-posts.js
 ```
 
-L'ordine nell'indice non conta — i post vengono sempre ordinati per data.
+oppure, se hai Python:
+
+```bash
+python scripts/update-posts.py
+```
+
+Lo script fa tutto in automatico:
+- aggiorna `posts/it/index.json` (e `posts/en/index.json`)
+- crea la cartella `it/posts/nome-post/` con il file `index.html`
+
+### 4. Pubblica
+
+Salva i file, fai commit e push su GitHub.
 
 ---
 
@@ -56,6 +76,7 @@ L'ordine nell'indice non conta — i post vengono sempre ordinati per data.
 ---
 title: Vitamina D: perché è così importante?
 date: 2026-04-01
+category: medicina
 summary: Scopri il ruolo della vitamina D nella salute delle ossa e del sistema immunitario.
 ---
 
@@ -72,11 +93,19 @@ La vitamina D è un ormone che il nostro corpo produce grazie all'esposizione al
 In caso di carenza, il medico può prescrivere una supplementazione adeguata.
 ```
 
-**`posts/it/index.json`**
-```json
-["vitamina-d", "dormire-bene", "benvenuta", "ferro-alimentazione"]
+Dopo aver eseguito lo script, il post sarà accessibile all'indirizzo:
+
+```
+https://dilettafalcone.it/it/posts/vitamina-d/
 ```
 
 ---
 
-Per pubblicare: salva i file, fai commit e push su GitHub.
+## Struttura delle URL
+
+| Pagina | URL |
+|--------|-----|
+| Lista post (IT) | `/it/posts/` |
+| Lista post (EN) | `/en/posts/` |
+| Singolo post (IT) | `/it/posts/nome-post/` |
+| Singolo post (EN) | `/en/posts/nome-post/` |

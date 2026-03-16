@@ -1,6 +1,7 @@
 ---
 title: "Prima colazione e salute: perché il primo pasto della giornata è fondamentale"
 date: 2026-03-15
+category: medicina
 summary: "Le evidenze scientifiche raccolte nel Documento di consenso della Nutrition Foundation of Italy confermano il ruolo centrale della prima colazione nella prevenzione di sovrappeso, malattie cardiovascolari e diabete, e nel miglioramento delle prestazioni cognitive a tutte le età."
 ---
 

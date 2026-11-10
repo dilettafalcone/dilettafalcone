@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Studi e tirocini di Diletta Falcone.">
+  <title>Percorso — Diletta Falcone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}t=t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Diletta Falcone</a>
+      <ul class="nav-links">
+        <li><a href="/percorso/" aria-current="page">Percorso</a></li>
+        <li><a href="/progetti/">Progetti</a></li>
+        <li><a href="/#contact">Contatti</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema"></button>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-head">
+      <h1>Percorso</h1>
+    </section>
+
+    <section id="formazione">
+      <h2 class="section-label">Formazione</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <span class="timeline-year">2021</span>
+          <div class="timeline-desc">Laurea in Medicina e Chirurgia<br><em class="timeline-place">Università degli Studi di Firenze</em></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2021–2024</span>
+          <div class="timeline-desc">Corso di Formazione Specifica in Medicina Generale<br><em class="timeline-place">Formas – Regione Toscana</em></div>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-year">2025–in corso</span>
+          <div class="timeline-desc">Scuola di Specializzazione in Igiene e Medicina Preventiva<br><em class="timeline-place">Università degli Studi di Firenze</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tirocini">
+      <h2 class="section-label">Tirocini</h2>
+
+      <article class="exp" id="ispro">
+        <header class="exp-head">
+          <span class="exp-period">23 feb – 30 set 2026</span>
+          <h3 class="exp-title">Direzione Sanitaria, ISPRO</h3>
+          <p class="exp-place">Istituto per lo Studio, la Prevenzione e la Rete Oncologica, Firenze <span class="exp-tag">Direzione sanitaria ospedaliera</span></p>
+        </header>
+      </article>
+
+      <article class="exp" id="firenze-sud-est">
+        <header class="exp-head">
+          <span class="exp-period">1 ott 2026 – 31 mar 2027 · in corso</span>
+          <h3 class="exp-title">Coordinamento Sanitario dei Servizi Territoriali, Firenze Sud-Est</h3>
+          <p class="exp-place"><span class="exp-tag">Distretto</span></p>
+        </header>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Diletta Falcone</p>
+  </footer>
+
+  <script src="/js/site.js"></script>
+</body>
+</html>

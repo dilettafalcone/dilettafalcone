@@ -3,20 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diletta Falcone, medico chirurgo. Studi, tirocini e progetti.">
   <title>Diletta Falcone</title>
-  <script>
-    const lang = navigator.language && navigator.language.toLowerCase().startsWith('en') ? 'en' : 'it';
-    window.location.replace('/' + lang + '/');
-  </script>
-  <noscript>
-    <meta http-equiv="refresh" content="0; url=/it/">
-  </noscript>
-  <style>
-    body { font-family: system-ui, sans-serif; display: flex; justify-content: center;
-           align-items: center; height: 100vh; margin: 0; background: #FAFAF8; color: #555; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script>(function(){var t=null;try{t=localStorage.getItem('theme')}catch(e){}t=t||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
 </head>
 <body>
-  <p>Reindirizzamento… / Redirecting…</p>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Diletta Falcone</a>
+      <ul class="nav-links">
+        <li><a href="/percorso/">Percorso</a></li>
+        <li><a href="/progetti/">Progetti</a></li>
+        <li><a href="/#contact">Contatti</a></li>
+      </ul>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambia tema"></button>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="home" class="hero">
+      <h1>Diletta Falcone</h1>
+      <p class="hero-subtitle">Medico Chirurgo</p>
+    </section>
+
+    <section id="ora">
+      <h2 class="section-label">Ora</h2>
+      <p>Medico in formazione specialistica in Igiene e Medicina Preventiva, Università degli Studi di Firenze. Da ottobre 2026 sono in tirocinio al Coordinamento Sanitario dei Servizi Territoriali, Firenze Sud-Est.</p>
+      <p><a class="more" href="/percorso/">Percorso →</a></p>
+    </section>
+
+    <section id="progetti">
+      <h2 class="section-label">Progetti</h2>
+      <p>Qui raccoglierò i progetti a cui sto lavorando.</p>
+      <p><a class="more" href="/progetti/">Progetti →</a></p>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-label">Contatti</h2>
+      <div class="contact-items">
+        <a href="mailto:info@dilettafalcone.it">info@dilettafalcone.it</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Diletta Falcone</p>
+  </footer>
+
+  <script src="/js/site.js"></script>
 </body>
 </html>
